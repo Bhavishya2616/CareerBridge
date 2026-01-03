@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CareerBridge</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <style>
+    /* Reset & base */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      background-color: #0f172a;
+      color: #f0f0f5;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* Navbar */
+    nav.navbar {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(17, 24, 39, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 30px;
+      box-shadow: 0 2px 12px rgba(124, 58, 237, 0.4);
+      z-index: 1000;
+      backdrop-filter: saturate(180%) blur(10px);
+    }
+    nav.navbar h2 {
+      color: #a78bfa;
+      font-weight: 800;
+      font-size: 1.6rem;
+      letter-spacing: 1.2px;
+      cursor: default;
+    }
+    nav.navbar ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+    nav.navbar ul li a {
+      color: #ddd;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+      padding: 5px 8px;
+      border-radius: 6px;
+    }
+    nav.navbar ul li a:hover,
+    nav.navbar ul li a.active {
+      color: #7c3aed;
+      background: rgba(124, 58, 237, 0.15);
+    }
+    button.theme-btn {
+      background: transparent;
+      border: none;
+      font-size: 1.4rem;
+      cursor: pointer;
+      color: #a78bfa;
+      transition: color 0.3s ease;
+    }
+    button.theme-btn:hover {
+      color: #fff;
+    }
+
+    /* Hero Section */
+    section.hero {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 20px;
+    }
+    section.hero video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: -1;
+      transform: translate(-50%, -50%);
+      filter: brightness(0.45) saturate(1.2);
+      object-fit: cover;
+    }
+    .hero-text {
+      max-width: 700px;
+      color: #f0f0f5;
+      text-shadow: 0 0 10px rgba(124, 58, 237, 0.7);
+      animation: fadeInUp 1.5s ease forwards;
+    }
+    .hero-text h1 {
+      font-size: 3rem;
+      font-weight: 900;
+      margin-bottom: 15px;
+      line-height: 1.1;
+      color: #d8b4fe;
+    }
+    .hero-text p {
+      font-size: 1.4rem;
+      margin-bottom: 30px;
+      font-weight: 600;
+      color: #c4b5fd;
+    }
+    .hero-text .btn {
+      display: inline-block;
+      padding: 14px 35px;
+      background: linear-gradient(90deg, #7c3aed, #a78bfa);
+      border-radius: 35px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+      box-shadow: 0 8px 20px rgba(124, 58, 237, 0.4);
+      transition: background 0.3s ease, transform 0.2s ease;
+      user-select: none;
+    }
+    .hero-text .btn:hover {
+      background: linear-gradient(90deg, #a78bfa, #7c3aed);
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Stats Section */
+    section.stats {
+      margin: 60px auto 80px;
+      max-width: 900px;
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      text-align: center;
+    }
+    section.stats div {
+      flex: 1 1 150px;
+      background: #1e293b;
+      padding: 30px 20px;
+      border-radius: 18px;
+      box-shadow: 0 6px 20px rgba(124, 58, 237, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+    }
+    section.stats div:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(124, 58, 237, 0.6);
+    }
+    section.stats h2 {
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: #a78bfa;
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px rgba(124, 58, 237, 0.7);
+    }
+    section.stats p {
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: #ddd;
+    }
+
+    /* Responsive */
+    @media (max-width: 850px) {
+      section.hero h1 {
+        font-size: 2.2rem;
+      }
+      section.hero p {
+        font-size: 1.1rem;
+      }
+      section.stats {
+        flex-direction: column;
+        gap: 25px;
+        max-width: 300px;
+        margin: 40px auto 60px;
+      }
+      section.stats div {
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav.navbar ul {
+        display: none; /* Hide nav links on very small screens */
+      }
+      nav.navbar {
+        justify-content: space-between;
+      }
+    }
+  </style>
+</head>
+<body>
+<nav class="navbar" role="navigation" aria-label="Primary navigation">
+  <h2>CareerBridge</h2>
+  <ul>
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="courses.html">Courses</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="signup.html">Sign Up</a></li>
+  </ul>
+  <button id="themeToggle" class="theme-btn" aria-label="Toggle light and dark theme">🌙</button>
+</nav>
+
+<section class="hero">
+  <video autoplay muted loop playsinline>
+    <source src="assets/videos/hero.mp4" type="video/mp4" />
+    <!-- fallback text if video unsupported -->
+    Your browser does not support the video tag.
+  </video>
+
+  <div class="hero-text" data-aos="fade-up">
+    <h1>Build Your Career with CareerBridge</h1>
+    <p>Your bridge from learning to success 🚀</p>
+    <a href="courses.html" class="btn" role="button">Explore Courses</a>
+  </div>
+</section>
+
+<section class="stats" aria-label="CareerBridge statistics">
+  <div data-aos="fade-up" data-aos-delay="100">
+    <h2 id="studentsCount">10K+</h2>
+    <p>Students</p>
+  </div>
+  <div data-aos="fade-up" data-aos-delay="200">
+    <h2 id="mentorsCount">50+</h2>
+    <p>Mentors</p>
+  </div>
+  <div data-aos="fade-up" data-aos-delay="300">
+    <h2 id="placementsCount">100+</h2>
+    <p>Placements</p>
+  </div>
+</section>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({
+    once: true,
+    duration: 800,
+    easing: "ease-in-out",
+  });
+
+  // Optional: simple animated counters
+  function animateCount(id, start, end, duration) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    let current = start;
+    const increment = (end - start) / (duration / 30);
+    const interval = setInterval(() => {
+      current += increment;
+      if (current >= end) {
+        el.textContent = end.toLocaleString() + (end >= 1000 ? '+' : '');
+        clearInterval(interval);
+      } else {
+        el.textContent = Math.floor(current).toLocaleString() + (end >= 1000 ? '+' : '');
+      }
+    }, 30);
+  }
+
+  // Animate counters on page load
+  animateCount("studentsCount", 0, 10000, 1500);
+  animateCount("mentorsCount", 0, 50, 1200);
+  animateCount("placementsCount", 0, 100, 1200);
+
+  // Dark/light toggle
+  const themeToggle = document.getElementById("themeToggle");
+  themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("light-theme");
+    if (document.body.classList.contains("light-theme")) {
+      themeToggle.textContent = "🌙";
+      document.body.style.backgroundColor = "#f9f9f9";
+      document.body.style.color = "#222";
+    } else {
+      themeToggle.textContent = "🌙";
+      document.body.style.backgroundColor = "#0f172a";
+      document.body.style.color = "#f0f0f5";
+    }
+  });
+</script>
+</body>
+</html>

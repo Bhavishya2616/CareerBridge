@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contact - CareerBridge</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <style>
+    body {
+      background-color: #0f172a;
+      color: #e0e0e0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+      margin: 0;
+      padding-top: 70px;
+    }
+
+    nav.navbar {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(17, 24, 39, 0.9);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      box-shadow: 0 3px 15px rgba(124, 58, 237, 0.4);
+      z-index: 1000;
+      backdrop-filter: saturate(180%) blur(10px);
+    }
+
+    nav.navbar h2 {
+      color: #a78bfa;
+      font-weight: 900;
+      font-size: 1.6rem;
+      letter-spacing: 1.2px;
+      cursor: default;
+    }
+
+    nav.navbar ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav.navbar ul li a {
+      color: #ccc;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 5px 8px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    nav.navbar ul li a:hover,
+    nav.navbar ul li a.active {
+      background-color: rgba(124, 58, 237, 0.15);
+      color: #a78bfa;
+    }
+
+    section.page {
+      max-width: 900px;
+      margin: 40px auto 60px;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    section.page h1 {
+      font-size: 2.8rem;
+      font-weight: 900;
+      margin-bottom: 20px;
+      color: #d8b4fe;
+      text-shadow: 0 0 10px rgba(124, 58, 237, 0.7);
+    }
+
+    section.page p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #c4b5fd;
+      margin-bottom: 15px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Form */
+    form.contact-form {
+      margin: 40px auto 60px;
+      max-width: 600px;
+      background: #1e293b;
+      padding: 30px 35px;
+      border-radius: 18px;
+      box-shadow: 0 6px 20px rgba(124, 58, 237, 0.3);
+      text-align: left;
+      color: #eee;
+    }
+
+    form.contact-form input,
+    form.contact-form textarea {
+      width: 100%;
+      background: #111827;
+      border: none;
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin-bottom: 22px;
+      font-size: 1rem;
+      color: #ddd;
+      resize: vertical;
+      transition: background-color 0.3s ease;
+    }
+
+    form.contact-form input::placeholder,
+    form.contact-form textarea::placeholder {
+      color: #7c3aed99;
+      font-style: italic;
+    }
+
+    form.contact-form input:focus,
+    form.contact-form textarea:focus {
+      background-color: #272f48;
+      outline: none;
+      box-shadow: 0 0 8px #7c3aedcc;
+      color: #fff;
+    }
+
+    form.contact-form button {
+      background: linear-gradient(90deg, #7c3aed, #a78bfa);
+      border: none;
+      padding: 14px 25px;
+      border-radius: 35px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(124, 58, 237, 0.45);
+      transition: background 0.3s ease, transform 0.2s ease;
+      width: 100%;
+      user-select: none;
+    }
+
+    form.contact-form button:hover {
+      background: linear-gradient(90deg, #a78bfa, #7c3aed);
+      transform: scale(1.05);
+    }
+
+    /* Success Message */
+    p.success-msg {
+      color: #22c55e;
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-top: 10px;
+      min-height: 1.5em;
+      text-align: center;
+    }
+
+    /* Cards Section */
+    h2 {
+      margin-bottom: 25px;
+      font-size: 2rem;
+      font-weight: 900;
+      color: #a78bfa;
+      text-shadow: 0 0 8px rgba(124, 58, 237, 0.7);
+    }
+
+    .cards {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background: #1e293b;
+      border-radius: 18px;
+      padding: 25px 20px;
+      max-width: 270px;
+      box-shadow: 0 6px 20px rgba(124, 58, 237, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+    }
+
+    .card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 12px 30px rgba(124, 58, 237, 0.6);
+    }
+
+    .card h3 {
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #d8b4fe;
+    }
+
+    .card p {
+      font-size: 1rem;
+      line-height: 1.4;
+      color: #c4b5fd;
+    }
+
+    /* Responsive */
+    @media (max-width: 720px) {
+      .cards {
+        flex-direction: column;
+        align-items: center;
+      }
+      form.contact-form {
+        padding: 25px 20px;
+        margin: 30px auto 50px;
+      }
+    }
+  </style>
+</head>
+<body>
+<nav class="navbar" role="navigation" aria-label="Primary navigation">
+  <h2>CareerBridge</h2>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="courses.html">Courses</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+    <li><a href="signup.html">Sign Up</a></li>
+  </ul>
+</nav>
+
+<section class="page" data-aos="fade-up">
+  <h1>Contact Us</h1>
+
+  <p>
+    Have questions about courses, career guidance, or registration?
+    Our team at CareerBridge is always ready to help you.
+  </p>
+
+  <p>
+    Reach out to us for career counseling, course details, or any support related
+    to your learning journey.
+  </p>
+
+  <form class="contact-form" onsubmit="showMessage(event)" aria-label="Contact form">
+    <input type="text" placeholder="Your Name" name="name" required aria-required="true" />
+    <input type="email" placeholder="Your Email" name="email" required aria-required="true" />
+    <textarea placeholder="Your Message" name="message" rows="5" aria-label="Message"></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+
+  <p id="successMsg" class="success-msg" role="alert" aria-live="polite"></p>
+
+  <h2 data-aos="fade-up" data-aos-delay="150">Get in Touch</h2>
+
+  <p data-aos="fade-up" data-aos-delay="250">
+    📍 Address: CareerBridge Learning Center, Bengaluru, India<br />
+    📧 Email: <a href="mailto:support@careerbridge.com" style="color:#a78bfa;">support@careerbridge.com</a><br />
+    📞 Phone: <a href="tel:+919876543210" style="color:#a78bfa;">+91 98765 43210</a>
+  </p>
+
+  <h2 data-aos="fade-up" data-aos-delay="350">Why Contact CareerBridge?</h2>
+
+  <div class="cards">
+    <div class="card" data-aos="fade-up" data-aos-delay="400">
+      <h3>Quick Support</h3>
+      <p>We respond to student queries within 24 hours.</p>
+    </div>
+
+    <div class="card" data-aos="fade-up" data-aos-delay="500">
+      <h3>Expert Guidance</h3>
+      <p>Get advice directly from experienced mentors.</p>
+    </div>
+
+    <div class="card" data-aos="fade-up" data-aos-delay="600">
+      <h3>Career Assistance</h3>
+      <p>Clarify doubts related to courses, careers, and placements.</p>
+    </div>
+  </div>
+</section>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ once: true, duration: 700 });
+
+  // Show success message on form submit
+  function showMessage(e) {
+    e.preventDefault();
+    const msg = document.getElementById('successMsg');
+    msg.textContent = "🎉 Thanks for reaching out! We'll get back to you soon.";
+    e.target.reset();
+    setTimeout(() => {
+      msg.textContent = '';
+    }, 7000);
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>About - CareerBridge</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <style>
+    body {
+      background-color: #0f172a;
+      color: #e0e0e0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding-top: 70px;
+    }
+
+    nav.navbar {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(17, 24, 39, 0.95);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      box-shadow: 0 3px 15px rgba(124, 58, 237, 0.4);
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+    }
+
+    nav.navbar h2 {
+      color: #a78bfa;
+      font-weight: 900;
+      font-size: 1.6rem;
+    }
+
+    nav.navbar ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav.navbar ul li a {
+      color: #ccc;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 5px 8px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    nav.navbar ul li a:hover,
+    nav.navbar ul li a.active {
+      background-color: rgba(124, 58, 237, 0.15);
+      color: #a78bfa;
+    }
+
+    /* Hero Section */
+    .hero-about {
+      max-width: 900px;
+      margin: 40px auto 60px;
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, rgba(124,58,237,0.3), rgba(17,24,39,0.85));
+      border-radius: 18px;
+      box-shadow: 0 6px 25px rgba(124, 58, 237, 0.5);
+    }
+
+    .hero-about h1 {
+      font-size: 2.8rem;
+      font-weight: 900;
+      margin-bottom: 20px;
+      color: #fff;
+      text-shadow: 0 0 15px rgba(124, 58, 237, 0.7);
+    }
+
+    .hero-about p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #e0e0e0;
+      max-width: 720px;
+      margin: 0 auto 25px auto;
+    }
+
+    .hero-about p a {
+      color: #a78bfa;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .hero-about p a:hover {
+      color: #7c3aed;
+      text-decoration: underline;
+    }
+
+    .hero-about img {
+      max-width: 450px;
+      width: 100%;
+      border-radius: 15px;
+      margin-top: 25px;
+      box-shadow: 0 8px 20px rgba(124, 58, 237, 0.4);
+    }
+
+    /* Mission & Vision Cards */
+    .cards-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      margin: 50px auto;
+      max-width: 900px;
+    }
+
+    .card {
+      background: #1e293b;
+      border-radius: 15px;
+      padding: 25px;
+      max-width: 280px;
+      text-align: center;
+      box-shadow: 0 6px 20px rgba(124, 58, 237, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+    }
+
+    .card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 12px 30px rgba(124, 58, 237, 0.6);
+    }
+
+    .card h3 {
+      color: #d8b4fe;
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      font-size: 1rem;
+      color: #c4b5fd;
+      line-height: 1.5;
+    }
+
+    /* Testimonials */
+    .testimonials {
+      margin-top: 60px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .testimonials h2 {
+      font-size: 2rem;
+      color: #a78bfa;
+      margin-bottom: 35px;
+      text-shadow: 0 0 10px rgba(124, 58, 237, 0.4);
+    }
+
+    .testimonials-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+    }
+
+    .testimonial-box {
+      background: #1e293b;
+      padding: 25px 20px;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(124, 58, 237, 0.3);
+      max-width: 300px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .testimonial-box:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 25px rgba(124, 58, 237, 0.6);
+    }
+
+    .testimonial-box img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      border: 3px solid #7c3aed;
+      object-fit: cover;
+    }
+
+    .testimonial-box p {
+      font-style: italic;
+      font-size: 1rem;
+      margin-bottom: 10px;
+      color: #c4b5fd;
+    }
+
+    .testimonial-box h4 {
+      color: #a78bfa;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    @media(max-width: 768px) {
+      .cards-container, .testimonials-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+<nav class="navbar" data-aos="fade-down">
+  <h2>CareerBridge</h2>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="courses.html">Courses</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="signup.html">Sign Up</a></li>
+  </ul>
+</nav>
+
+<section class="hero-about" data-aos="fade-up" data-aos-duration="800">
+  <h1>About CareerBridge</h1>
+  <p>
+    We help students gain <a href="services.html#skill-development">skills</a>, confidence, and jobs through expert guidance.
+    CareerBridge was created with one mission — to bridge the gap between
+    <a href="about.html#education-vs-employment" title="Learn more">education and employment</a>.
+    Every student deserves proper guidance, mentorship, and opportunities to succeed in their career.
+  </p>
+  <img src="assets/images/about.jpg" alt="CareerBridge students learning" />
+</section>
+
+<section class="cards-container" data-aos="fade-up" data-aos-delay="200">
+  <div class="card">
+    <h3>Our Mission</h3>
+    <p>Empower students with skills, confidence, and guidance to build a successful career.</p>
+  </div>
+  <div class="card">
+    <h3>Our Vision</h3>
+    <p>Create a world where every student has access to mentorship and opportunities to succeed.</p>
+  </div>
+  <div class="card">
+    <h3>Our Values</h3>
+    <p>Integrity, dedication, practical learning, and fostering lifelong growth in careers.</p>
+  </div>
+</section>
+
+<section class="testimonials" data-aos="fade-up" data-aos-delay="400">
+  <h2>What Students Say</h2>
+  <div class="testimonials-container">
+    <div class="testimonial-box" tabindex="0">
+      <img src="assets/images/user1.jpg" alt="Rahul - CareerBridge Student" />
+      <p>"CareerBridge changed my life! The guidance was clear and practical."</p>
+      <h4>- Michael</h4>
+    </div>
+    <div class="testimonial-box" tabindex="0">
+      <img src="assets/images/user2.jpg" alt="Sneha - CareerBridge Student" />
+      <p>"Amazing mentors and support. I landed my dream job thanks to CareerBridge."</p>
+      <h4>- Lisa</h4>
+    </div>
+  </div>
+</section>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ once: true, duration: 800 });
+</script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sign Up - CareerBridge</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    /* Signup page specific styles */
+    .signup-container {
+      max-width: 400px;
+      margin: 100px auto 50px;
+      padding: 30px;
+      background: #1e293b;
+      border-radius: 15px;
+      color: white;
+      box-shadow: 0 4px 15px rgb(124 58 237 / 0.4);
+      text-align: center;
+    }
+    .signup-container h1 {
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+    .signup-container input {
+      width: 100%;
+      padding: 12px 15px;
+      margin: 12px 0;
+      border-radius: 30px;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      background: #111827;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+    .signup-container input::placeholder {
+      color: #9ca3af;
+    }
+    .signup-container input:focus {
+      background: #272f48;
+    }
+    .signup-container button {
+      width: 100%;
+      padding: 14px;
+      background: #7c3aed;
+      border: none;
+      border-radius: 30px;
+      color: white;
+      font-size: 1.1rem;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background-color 0.3s ease;
+    }
+    .signup-container button:hover {
+      background: #5a27b6;
+    }
+    #successMessage {
+      margin-top: 25px;
+      font-weight: 600;
+      color: #22c55e;
+    }
+    #successMessage a {
+      display: inline-block;
+      margin-top: 15px;
+      color: #a78bfa;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    #successMessage a:hover {
+      text-decoration: underline;
+    }
+
+    /* Password show/hide styles */
+    .password-wrapper {
+      position: relative;
+      width: 100%;
+      margin: 12px 0;
+    }
+    .password-wrapper input {
+      width: 100%;
+      padding-right: 40px; /* space for eye icon */
+    }
+    .toggle-password {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: #9ca3af;
+      font-size: 18px;
+      user-select: none;
+    }
+    .toggle-password:hover {
+      color: #7c3aed;
+    }
+  </style>
+</head>
+<body class="dark">
+  <nav class="navbar">
+    <h2>CareerBridge</h2>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="courses.html">Courses</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="signup.html" class="active">Sign Up</a></li>
+    </ul>
+    <button id="themeToggle">☀️</button>
+  </nav>
+
+  <div class="signup-container" data-aos="fade-up">
+    <h1>Create Your Account</h1>
+    <form id="signupForm">
+      <input type="text" name="fullname" placeholder="Full Name" required />
+      <input type="email" name="email" placeholder="Email Address" required />
+
+      <!-- Password with show/hide -->
+      <div class="password-wrapper">
+        <input type="password" id="password" name="password" placeholder="Password" minlength="6" required />
+        <i class="fa-solid fa-eye toggle-password" data-target="password"></i>
+      </div>
+
+      <!-- Confirm password with show/hide -->
+      <div class="password-wrapper">
+        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" minlength="6" required />
+        <i class="fa-solid fa-eye toggle-password" data-target="confirmPassword"></i>
+      </div>
+
+      <button type="submit">Register</button>
+    </form>
+    <div id="successMessage" style="display:none;">
+       Signup Completed! <br />
+      <a href="index.html">Back to Home</a>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    // Dark mode toggle
+    const toggle = document.getElementById("themeToggle");
+    toggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      if (document.body.classList.contains("dark")) {
+        toggle.innerText = "☀️";
+      } else {
+        toggle.innerText = "🌙";
+      }
+    });
+
+    // Signup form submission
+    const form = document.getElementById("signupForm");
+    const successMessage = document.getElementById("successMessage");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      // Simple password match validation
+      const password = form.password.value.trim();
+      const confirmPassword = form.confirmPassword.value.trim();
+
+      if (password !== confirmPassword) {
+        alert("Passwords do not match! Please try again.");
+        return;
+      }
+
+      // Show success message
+      form.style.display = "none";
+	  document.querySelector('.signup-container h1').style.display = "none";
+      successMessage.style.display = "block";
+    });
+
+    // Show/hide password functionality
+    document.querySelectorAll('.toggle-password').forEach(icon => {
+      icon.addEventListener('click', () => {
+        const targetId = icon.getAttribute('data-target');
+        const input = document.getElementById(targetId);
+
+        if (input.type === 'password') {
+          input.type = 'text';
+          icon.classList.remove('fa-eye');
+          icon.classList.add('fa-eye-slash');
+        } else {
+          input.type = 'password';
+          icon.classList.remove('fa-eye-slash');
+          icon.classList.add('fa-eye');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
